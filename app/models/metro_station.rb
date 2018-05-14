@@ -1,0 +1,3 @@
+class MetroStation < Place
+
+end

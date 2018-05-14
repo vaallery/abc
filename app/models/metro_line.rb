@@ -1,0 +1,2 @@
+class MetroLine < ApplicationRecord
+end
