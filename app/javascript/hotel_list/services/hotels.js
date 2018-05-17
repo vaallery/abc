@@ -1,5 +1,4 @@
-export default {
-  hotels_data: [
+export default [
     {
       id: 1,
       name: 'МАКСИМА ЗАРЯ (м. Владыкино)',
@@ -73,5 +72,3 @@ export default {
       images: ['url1', 'url2', 'url3'],
     },
   ]
-}
-
