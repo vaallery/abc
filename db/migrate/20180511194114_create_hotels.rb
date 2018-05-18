@@ -2,6 +2,7 @@ class CreateHotels < ActiveRecord::Migration[5.2]
   def change
     create_table :hotels do |t|
       t.string :name
+      t.string :hotel_category
       t.float :latitude
       t.float :longitude
       t.text :description
@@ -10,6 +11,7 @@ class CreateHotels < ActiveRecord::Migration[5.2]
       t.string :phone
       t.boolean :for_main_page, default: false
       t.boolean :active, default: true
+      t.jsonb :images
 
       t.timestamps
     end

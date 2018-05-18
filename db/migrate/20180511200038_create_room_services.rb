@@ -1,6 +1,6 @@
-class CreateRoomServices < ActiveRecord::Migration[5.2]
+class CreateRoomsServices < ActiveRecord::Migration[5.2]
   def change
-    create_table :room_services do |t|
+    create_table :rooms_services do |t|
       t.references :service, foreign_key: true
       t.references :room, foreign_key: true
 

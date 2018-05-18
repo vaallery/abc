@@ -1,6 +1,6 @@
-class CreateHotelDirections < ActiveRecord::Migration[5.2]
+class CreateHotelsDirections < ActiveRecord::Migration[5.2]
   def change
-    create_table :hotel_directions do |t|
+    create_table :hotels_directions do |t|
       t.references :hotel, foreign_key: true
       t.references :direction, foreign_key: true
 
