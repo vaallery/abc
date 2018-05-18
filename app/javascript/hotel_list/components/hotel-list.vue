@@ -17,7 +17,12 @@
 
 <style scoped>
 .hotel-list{
-  border: 1px solid #000000;
   width: 50%;
+  background:#f4f5f6;
+  font-family: sans-serif;
+  font-size:14px;
+  padding: 5px;
+  height: 600px;
+  z-index: 0;
 }
 </style>
