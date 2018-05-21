@@ -1,5 +1,5 @@
 <template>
-  <div class="hotel-list">
+  <div class="hotel-list clearfix">
     <div v-for="hotel in hotels">
       <hotel-item :hotel="hotel"></hotel-item>
     </div>
@@ -17,12 +17,12 @@
 
 <style scoped>
 .hotel-list{
-  width: 50%;
+  width: 748px;
   background:#f4f5f6;
   font-family: sans-serif;
   font-size:14px;
   padding: 5px;
-  height: 600px;
+  /*height: 600px;*/
   z-index: 0;
 }
 </style>

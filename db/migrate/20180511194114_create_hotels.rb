@@ -11,7 +11,7 @@ class CreateHotels < ActiveRecord::Migration[5.2]
       t.string :phone
       t.boolean :for_main_page, default: false
       t.boolean :active, default: true
-      t.jsonb :images
+      t.string :images
 
       t.timestamps
     end

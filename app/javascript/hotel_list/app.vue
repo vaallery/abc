@@ -7,17 +7,24 @@
 
 <script>
   import HotelList from './components/hotel-list'
-  import hotels_data from './services/hotels'
+  import {getHotels} from './services/hotels'
 
   export default {
     data () {
       return {
-        hotels: hotels_data,
+        hotels: {},
         message: "Тут будет список отелей с картой!"
       }
     },
     components: {
       HotelList
+    },
+    created() {
+      getHotels().then(response  => {
+        this.hotels = response.body
+      }).catch(error => {
+        this.hotels = {}
+      });
     }
   }
 </script>
