@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_18_170600) do
+ActiveRecord::Schema.define(version: 2018_05_19_110927) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,6 +90,18 @@ ActiveRecord::Schema.define(version: 2018_05_18_170600) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "ckeditor_assets", force: :cascade do |t|
+    t.string "data_file_name", null: false
+    t.string "data_content_type"
+    t.integer "data_file_size"
+    t.string "type", limit: 30
+    t.integer "width"
+    t.integer "height"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["type"], name: "index_ckeditor_assets_on_type"
+  end
+
   create_table "configurations", force: :cascade do |t|
     t.bigint "room_id"
     t.bigint "stay_time_id"
@@ -132,13 +144,6 @@ ActiveRecord::Schema.define(version: 2018_05_18_170600) do
     t.index ["place_id"], name: "index_distances_on_place_id"
   end
 
-  create_table "hotel_categories", force: :cascade do |t|
-    t.string "name"
-    t.string "slug"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "hotels", force: :cascade do |t|
     t.string "name"
     t.string "hotel_category"
@@ -150,7 +155,7 @@ ActiveRecord::Schema.define(version: 2018_05_18_170600) do
     t.string "phone"
     t.boolean "for_main_page", default: false
     t.boolean "active", default: true
-    t.string "images"
+    t.string "images", array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -240,7 +245,7 @@ ActiveRecord::Schema.define(version: 2018_05_18_170600) do
     t.integer "rooms"
     t.boolean "additional_bed"
     t.boolean "active", default: true
-    t.string "images"
+    t.string "images", array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["hotel_id"], name: "index_rooms_on_hotel_id"

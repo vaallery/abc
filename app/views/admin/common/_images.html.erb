@@ -1,0 +1,15 @@
+<div id="images">
+  <% resource.images.each_with_index do |image, index| %>
+    <div style="display: inline-block;">
+      <%= link_to image_path(image.url), data: {lightbox: resource.id} do %>
+        <%= image_tag image.thumb.url, alt: image.url, height: "100" %>
+      <% end %>
+      <%# if @remove_picture_link %>
+<!--        <p>-->
+<!--          <%#= link_to "Удалить", admin_image_path(image), method: :delete, remote: true,-->
+                      data: {confirm: "Вы уверены, что хотите удалить изображение?"} %>
+<!--        </p>-->
+      <%# end %>
+    </div>
+  <% end %>
+</div>

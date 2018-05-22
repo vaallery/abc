@@ -13,7 +13,7 @@ class CreateRooms < ActiveRecord::Migration[5.2]
       t.integer :rooms
       t.boolean :additional_bed
       t.boolean :active, default: true
-      t.string :images
+      t.string :images, array: true
 
       t.timestamps
     end

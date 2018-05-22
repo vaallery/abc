@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Hotel < ApplicationRecord
   has_many :distances
   has_many :places, through: :distances
@@ -12,7 +10,7 @@ class Hotel < ApplicationRecord
   # has_many :images, as: :imageable, dependent: :destroy
 
   mount_uploaders :images, ImageUploader
-  serialize :images, JSON
+  # serialize :images, JSON
 
   enum hotel_category: {
     two_stars:    'two_stars',

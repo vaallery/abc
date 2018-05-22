@@ -1,0 +1,100 @@
+ru:
+  attributes:
+    id: '#'
+    name: Наименование
+    description: Описание
+    active: Активный
+    archive: Архивный
+    picture: Изображение
+    href_id:  Идентификатор
+    email: Электронная почта
+    latitude: Широта
+    longitude: Долгота
+    place_category: Тип объекта
+    direction: Направление
+    slug: URL-заголовок
+    created_at: Создано
+    updated_at: Обновлено
+
+  activerecord:
+    models:
+      place_category:
+        one: Тип объекта
+        few: Типа объектов
+        many: Типов объектов
+        other: Типы объектов
+      service:
+        one: Услуга
+        few: Услуги
+        many: Услуг
+        other: Услуги
+      advert:
+        one: Акция
+        few: Акции
+        many: Акций
+        other: Акции
+      direction:
+        one: Направление
+        few: Направления
+        many: Направлений
+        other: Направления
+      user:
+        one: Пользователь
+        few: Пользователя
+        many: Пользователей
+        other: Пользователи
+      place:
+        one: Объект
+        few: Объекта
+        many: Объектов
+        other: Объекты
+      hotel:
+        one: Отель
+        few: Отеля
+        many: Отелей
+        other: Отели
+      room:
+        one: Номер
+        few: Номера
+        many: Номеров
+        other: Номера
+      configuration:
+        one: Цена
+        few: Цены
+        many: Цен
+        other: Цены
+      hotel_category:
+        one: Класс отеля
+        few: Класса отеля
+        many: Классов отелей
+        other: Классы отелей
+    attributes:
+      place_category:
+        tag: Тег
+      service:
+        for_hotel: Для отеля
+        for_room: Для номера
+        for_configuration: Для цены
+      hotel:
+        services: Услуги
+        phone: Телефон
+        hotel_category: Категория
+        address: Адрес
+        pictures: Фотографии
+        images: Фотографии
+        for_main_page: Выводить на главную страницу
+      room:
+        square: Площадь
+        bed1: Односпальных кроватей
+        bed2: Двуспальных кроватей
+        rooms: Комнат
+        additional_bed: Возможность установить дополнительную кровать
+        bed: Описание кровати
+        services: Сервисы
+        stay_time: Время
+      configuration:
+        guests_count: Количество гостей
+        cost: Цена
+        services: Сервисы
+        stay_time: Время
+
