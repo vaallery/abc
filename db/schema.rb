@@ -10,9 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_19_110927) do
+ActiveRecord::Schema.define(version: 2018_05_22_194712) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "cube"
+  enable_extension "earthdistance"
   enable_extension "plpgsql"
 
   create_table "active_admin_comments", force: :cascade do |t|
@@ -144,9 +146,17 @@ ActiveRecord::Schema.define(version: 2018_05_19_110927) do
     t.index ["place_id"], name: "index_distances_on_place_id"
   end
 
+  create_table "hotel_categories", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "hotels", force: :cascade do |t|
     t.string "name"
-    t.string "hotel_category"
+    t.bigint "hotel_category_id"
+    t.bigint "main_direction_id"
     t.float "latitude"
     t.float "longitude"
     t.text "description"
@@ -155,9 +165,14 @@ ActiveRecord::Schema.define(version: 2018_05_19_110927) do
     t.string "phone"
     t.boolean "for_main_page", default: false
     t.boolean "active", default: true
-    t.string "images", array: true
+    t.jsonb "images", array: true
+    t.float "rating"
+    t.integer "review_count"
+    t.float "min_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["hotel_category_id"], name: "index_hotels_on_hotel_category_id"
+    t.index ["main_direction_id"], name: "index_hotels_on_main_direction_id"
   end
 
   create_table "hotels_directions", force: :cascade do |t|
@@ -187,25 +202,20 @@ ActiveRecord::Schema.define(version: 2018_05_19_110927) do
     t.index ["direction_id"], name: "index_metro_lines_on_direction_id"
   end
 
-  create_table "place_categories", force: :cascade do |t|
-    t.string "name"
-    t.integer "tag"
-    t.boolean "active", default: true
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "places", force: :cascade do |t|
-    t.bigint "place_category_id"
+    t.string "place_category"
     t.string "name"
+    t.bigint "main_direction_id"
     t.float "latitude"
     t.float "longitude"
     t.text "description"
     t.string "slug"
     t.boolean "active", default: true
+    t.bigint "metro_line_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["place_category_id"], name: "index_places_on_place_category_id"
+    t.index ["main_direction_id"], name: "index_places_on_main_direction_id"
+    t.index ["metro_line_id"], name: "index_places_on_metro_line_id"
   end
 
   create_table "places_directions", force: :cascade do |t|
@@ -245,7 +255,7 @@ ActiveRecord::Schema.define(version: 2018_05_19_110927) do
     t.integer "rooms"
     t.boolean "additional_bed"
     t.boolean "active", default: true
-    t.string "images", array: true
+    t.jsonb "images", array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["hotel_id"], name: "index_rooms_on_hotel_id"
@@ -273,7 +283,7 @@ ActiveRecord::Schema.define(version: 2018_05_19_110927) do
   create_table "services", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.integer "tag"
+    t.string "tag"
     t.boolean "for_hotel"
     t.boolean "for_room"
     t.boolean "for_configuration"
@@ -295,14 +305,19 @@ ActiveRecord::Schema.define(version: 2018_05_19_110927) do
   add_foreign_key "configurations", "stay_times"
   add_foreign_key "configurations_services", "configurations"
   add_foreign_key "configurations_services", "services"
-  add_foreign_key "distances", "hotels"
-  add_foreign_key "distances", "places"
-  add_foreign_key "hotels_directions", "directions"
-  add_foreign_key "hotels_directions", "hotels"
+  add_foreign_key "distances", "hotels", on_delete: :cascade
+  add_foreign_key "distances", "places", on_delete: :cascade
+  add_foreign_key "hotels", "directions", column: "main_direction_id", on_delete: :nullify
+  add_foreign_key "hotels", "hotel_categories", on_delete: :nullify
+  add_foreign_key "hotels_directions", "directions", on_delete: :cascade
+  add_foreign_key "hotels_directions", "hotels", on_delete: :cascade
   add_foreign_key "hotels_services", "hotels"
   add_foreign_key "hotels_services", "services"
-  add_foreign_key "metro_lines", "directions"
-  add_foreign_key "places", "place_categories"
+  add_foreign_key "metro_lines", "directions", on_delete: :nullify
+  add_foreign_key "places", "directions", column: "main_direction_id", on_delete: :nullify
+  add_foreign_key "places", "metro_lines", on_delete: :nullify
+  add_foreign_key "places_directions", "directions", on_delete: :cascade
+  add_foreign_key "places_directions", "places", on_delete: :cascade
   add_foreign_key "reviews", "bookings"
   add_foreign_key "reviews", "hotels"
   add_foreign_key "rooms", "hotels"

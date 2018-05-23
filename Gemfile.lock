@@ -47,6 +47,8 @@ GEM
       activemodel (= 5.2.0)
       activesupport (= 5.2.0)
       arel (>= 9.0)
+    activerecord-import (0.23.0)
+      activerecord (>= 3.2)
     activestorage (5.2.0)
       actionpack (= 5.2.0)
       activerecord (= 5.2.0)
@@ -93,6 +95,8 @@ GEM
       warden (~> 1.2.3)
     erubi (1.7.1)
     execjs (2.7.0)
+    faker (1.8.7)
+      i18n (>= 0.7)
     ffi (1.9.23)
     formtastic (3.1.5)
       actionpack (>= 3.2.13)
@@ -268,12 +272,14 @@ PLATFORMS
 DEPENDENCIES
   activeadmin
   activeadmin_latlng
+  activerecord-import
   bootsnap (>= 1.1.0)
   byebug
   carrierwave
   ckeditor
   coffee-rails (~> 4.2)
   devise
+  faker
   geocoder
   jbuilder (~> 2.5)
   lightbox2-rails

@@ -58,10 +58,12 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'activeadmin'
 gem 'activeadmin_latlng'
+gem 'activerecord-import'
 gem 'carrierwave'
 gem 'ckeditor'
 gem 'devise'
+gem 'faker'
+gem 'geocoder'
 gem 'lightbox2-rails'
 gem 'mini_magick'
 gem 'russian'
-gem 'geocoder'
