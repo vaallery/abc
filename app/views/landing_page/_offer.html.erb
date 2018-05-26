@@ -1,0 +1,15 @@
+<div class="col-md-4">
+  <div class="hotel-img">
+<!--TODO При клике на блок сделать переход на страницу отеля-->
+    <%= image_tag("hotels/h108/room#{rand(2)+1}.jpg") %>
+    <div class="hotel-rating"><%= hotel.rating %></div>
+    <div class="info-wrap">
+      <div class="hotel-name"><%= hotel.name %></div>
+      <div class="hotel-cost">
+        <span>от</span>
+        <span class="total-cost"><%= hotel.min_price %></span>
+        <span>р./сутки</span>
+      </div>
+    </div>
+  </div>
+</div>

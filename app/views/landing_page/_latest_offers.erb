@@ -1,0 +1,10 @@
+<div id="latest-offers">
+  <div class="container">
+    <h2>Последние предложения</h2>
+    <div class="row">
+      <% @hotels.each do |hotel| %>
+        <%= render 'offer', hotel: hotel%>
+      <% end %>
+    </div>
+  </div>
+</div>

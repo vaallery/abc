@@ -1,0 +1,37 @@
+<div id="navigation">
+  <div class="header">
+    <div class="container">
+      <div id="aside-menu">
+        <i class="icon-menu"></i>
+        <div id="main-menu">
+          <transition name="slideInLeft">
+            <div v-if="show" class="left-menu">
+              <div class="links">
+                <a class="menu-favorites" href="#">Избранное</a>
+                <a class="menu-resent" href="#">Недавнее</a>
+                <a href="#">Контакты</a>
+              </div>
+            </div>
+          </transition>
+          <div v-if="show" @click="show =! show" class="menu-overlay"></div>
+        </div>
+      </div>
+      <div class="logo">
+        <a href="/">Azbuka<span>Hotels</span>.ru</a>
+      </div>
+      <div class="favorites">
+        <a href="#">Избранное</a>
+      </div>
+      <div class="resent">
+        <a href="#">Недавнее</a>
+      </div>
+      <div class="lang">
+        <span class="selected-lang lang-ru">RU</span>
+      </div>
+      <div class="phone">
+        <span>8 800 500 81 86</span>
+        <a href="#">Обратный звонок</a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -264,7 +264,7 @@ ActiveRecord::Schema.define(version: 2018_05_22_194712) do
   create_table "rooms_adverts", force: :cascade do |t|
     t.bigint "advert_id"
     t.bigint "room_id"
-    t.boolean "active", default: true
+    t.boolean "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["advert_id"], name: "index_rooms_adverts_on_advert_id"
@@ -303,16 +303,16 @@ ActiveRecord::Schema.define(version: 2018_05_22_194712) do
   add_foreign_key "booking_configurations", "configurations"
   add_foreign_key "configurations", "rooms"
   add_foreign_key "configurations", "stay_times"
-  add_foreign_key "configurations_services", "configurations"
-  add_foreign_key "configurations_services", "services"
+  add_foreign_key "configurations_services", "configurations", on_delete: :cascade
+  add_foreign_key "configurations_services", "services", on_delete: :cascade
   add_foreign_key "distances", "hotels", on_delete: :cascade
   add_foreign_key "distances", "places", on_delete: :cascade
   add_foreign_key "hotels", "directions", column: "main_direction_id", on_delete: :nullify
   add_foreign_key "hotels", "hotel_categories", on_delete: :nullify
   add_foreign_key "hotels_directions", "directions", on_delete: :cascade
   add_foreign_key "hotels_directions", "hotels", on_delete: :cascade
-  add_foreign_key "hotels_services", "hotels"
-  add_foreign_key "hotels_services", "services"
+  add_foreign_key "hotels_services", "hotels", on_delete: :cascade
+  add_foreign_key "hotels_services", "services", on_delete: :cascade
   add_foreign_key "metro_lines", "directions", on_delete: :nullify
   add_foreign_key "places", "directions", column: "main_direction_id", on_delete: :nullify
   add_foreign_key "places", "metro_lines", on_delete: :nullify
@@ -321,8 +321,8 @@ ActiveRecord::Schema.define(version: 2018_05_22_194712) do
   add_foreign_key "reviews", "bookings"
   add_foreign_key "reviews", "hotels"
   add_foreign_key "rooms", "hotels"
-  add_foreign_key "rooms_adverts", "adverts"
-  add_foreign_key "rooms_adverts", "rooms"
-  add_foreign_key "rooms_services", "rooms"
-  add_foreign_key "rooms_services", "services"
+  add_foreign_key "rooms_adverts", "adverts", on_delete: :cascade
+  add_foreign_key "rooms_adverts", "rooms", on_delete: :cascade
+  add_foreign_key "rooms_services", "rooms", on_delete: :cascade
+  add_foreign_key "rooms_services", "services", on_delete: :cascade
 end
