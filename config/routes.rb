@@ -13,4 +13,5 @@ Rails.application.routes.draw do
 
   root 'landing_page#index'
   get 'hotels', to: 'hotel_list_app#index'
+  get 'hotels/:id', to: 'hotels#show'
 end
