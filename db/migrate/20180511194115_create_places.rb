@@ -10,7 +10,7 @@ class CreatePlaces < ActiveRecord::Migration[5.2]
       t.text :description
       t.string :slug
       t.boolean :active, default: true
-      t.references :metro_line, foreign_key: { on_delete: :nullify }
+      t.integer :metro_line_id
 
       t.timestamps
     end

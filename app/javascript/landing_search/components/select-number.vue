@@ -3,8 +3,8 @@
     <select  :value="count" v-on:change="$emit('change', +$event.target.value)">
       <option v-for="c in ['',1,2,3,4,5,6,7,8,9,10] ">{{ c }}</option>
     </select>
-  <span class="arrow-up" @click="addValue"></span>
-  <span class="arrow-down" @click="delValue"></span>
+    <span class="arrow-up" @click="addValue"></span>
+    <span class="arrow-down" @click="delValue"></span>
   </div>
 </template>
 
@@ -40,6 +40,7 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     cursor: pointer;
+    background: #fff;
 
   }
 
@@ -66,21 +67,21 @@
     background: url('./img/input-arrow-up.svg')center no-repeat;
     background-size:10px;
   }
-.arrow-down:hover,
-.arrow-up:hover{
+  .arrow-down:hover,
+  .arrow-up:hover{
     background-color:#eee;
 
-}
+  }
 
-.arrow-down:active,
-.arrow-up:active {
-  transform: translate(1px,1px);
-}
+  .arrow-down:active,
+  .arrow-up:active {
+    transform: translate(1px,1px);
+  }
 
 
-.arrow-down {
+  .arrow-down {
     top:21px;
     background: url('./img/input-arrow-down.svg')center no-repeat;
     background-size:10px;
-}
+  }
 </style>

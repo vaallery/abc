@@ -48,6 +48,7 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'faker'
   gem 'rails-erd'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
@@ -56,15 +57,15 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
+gem 'active_model_serializers'
 gem 'activeadmin'
 gem 'activeadmin_latlng'
 gem 'activerecord-import'
+gem 'bootstrap-sass'
 gem 'carrierwave'
 gem 'ckeditor'
 gem 'devise'
-gem 'faker'
 gem 'geocoder'
 gem 'lightbox2-rails'
 gem 'mini_magick'
 gem 'russian'
-gem 'bootstrap-sass'

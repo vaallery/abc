@@ -211,11 +211,10 @@ ActiveRecord::Schema.define(version: 2018_05_22_194712) do
     t.text "description"
     t.string "slug"
     t.boolean "active", default: true
-    t.bigint "metro_line_id"
+    t.integer "metro_line_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["main_direction_id"], name: "index_places_on_main_direction_id"
-    t.index ["metro_line_id"], name: "index_places_on_metro_line_id"
   end
 
   create_table "places_directions", force: :cascade do |t|
@@ -315,7 +314,6 @@ ActiveRecord::Schema.define(version: 2018_05_22_194712) do
   add_foreign_key "hotels_services", "services", on_delete: :cascade
   add_foreign_key "metro_lines", "directions", on_delete: :nullify
   add_foreign_key "places", "directions", column: "main_direction_id", on_delete: :nullify
-  add_foreign_key "places", "metro_lines", on_delete: :nullify
   add_foreign_key "places_directions", "directions", on_delete: :cascade
   add_foreign_key "places_directions", "places", on_delete: :cascade
   add_foreign_key "reviews", "bookings"

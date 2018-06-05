@@ -26,9 +26,13 @@
                 <input>
               </div>
             </div>
-            <div v-if="stay_period=='hour'" class="s-date" >
+            <div v-if="stay_period=='hour'" class="select-date-hour" >
               <div class="date-wrap">
                 <span>Дата заезда</span>
+                <input>
+              </div>
+              <div class="time-wrap">
+                <span>Время заезда</span>
                 <input>
               </div>
             </div>
@@ -79,8 +83,8 @@
 </script>
 
 <style scoped>
-p {
-  font-size: 2em;
-  text-align: center;
-}
+  p {
+    font-size: 2em;
+    text-align: center;
+  }
 </style>

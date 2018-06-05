@@ -5,7 +5,8 @@ Rails.application.routes.draw do
 
   namespace :api, constraints: { format: 'json' } do
     namespace :v1 do
-      resources :hotels, only: %w[index show]
+      resources :hotels, only: %w[index]
+      resources :filters, only: %w[index]
       resources :geocoder, only: %w[index]
     end
   end

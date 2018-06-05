@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Hotel < ApplicationRecord
   has_many :distances
   has_many :places, through: :distances
@@ -8,6 +10,13 @@ class Hotel < ApplicationRecord
   belongs_to :hotel_category
   scope :main_offers, -> { where for_main_page: true }
   scope :active, -> { where active: true }
+
+  # scope :filter, ->(filters) {
+  #   h = {}
+  #   h[:hotel_category_id] = filters[:accommodations] if filters[:accommodations]
+  #   h[:hotels_services] = [service_id: filters[:services]] if filters[:services]
+  #   h.any? ? where(h) : nil
+  # }
 
   mount_uploaders :images, ImageUploader
 end

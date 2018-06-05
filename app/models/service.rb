@@ -6,7 +6,22 @@ class Service < ApplicationRecord
   has_many :configurations_services
   has_many :configurations, through: :configurations_services
 
-  scope :for_hotel, -> { where(for_hotel: true, active: true).order(name: :asc) }
-  scope :for_room, -> { where(for_room: true, active: true).order(name: :asc) }
-  scope :for_configuration, -> { where(for_configuration: true, active: true).order(name: :asc) }
+  # @return [Array]
+  def self.for_hotel
+    @for_hotel ||= Service.for(:for_hotel)
+  end
+
+  # @return [Array]
+  def self.for_room
+    @for_room ||= Service.for(:for_room)
+  end
+
+  # @return [Array]
+  def self.for_configuration
+    @for_configuration ||= Service.for(:for_configuration)
+  end
+
+  def self.for(obj)
+    Service.where(obj => true, active: true).order(name: :asc).pluck(:id, :tag, :name)
+  end
 end
