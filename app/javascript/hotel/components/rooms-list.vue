@@ -31,7 +31,7 @@
             <div class="reservation">
               <span>Номеров</span>
               <input ref="conf.id">
-              <button class="reservation-btn" v-on:click="book($event, conf.id)">Я бронирую</button>
+              <button class="reservation-btn" v-on:click="book( conf)">Я бронирую</button>
             </div>
           </div>
         </div>
@@ -43,10 +43,12 @@
 <script>
   export default {
     name: "rooms-list",
-    props: ['rooms'],
+    props: ['rooms', 'guest_count'],
     methods: {
-      book() {
-        this.$emit('selected', )
+      book(conf) {
+        // console.log(e)
+        console.log(conf);
+        this.$emit('on-select', conf)
       }
     }
   }

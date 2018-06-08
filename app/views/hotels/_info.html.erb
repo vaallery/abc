@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col-md-8">
+    <div class="preview-box">
+      <%= image_tag("hotels/h108/room2.jpg") %>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="sidebar">
+      <div class="services">
+        <% @hotel.services.each do |service| %>
+          <span class="<%= service.tag %>"></span>
+        <% end %>
+        <div class="favorite"></div>
+      </div>
+      <div class="reservation-department">
+        <h4>Отдел бронирования:</h4>
+        <span>8-495-638-54-75</span>
+        <label>Бесплатно для регионов:</label>
+        <span>8-495-638-54-75</span>
+        <label>Для звонков с мобильных:</label>
+        <span>8-495-638-54-75</span>
+      </div>
+      <div class="points">
+        <% if @subway_stations.any? %>
+          <div class="metro">
+            <h4>Ближайшие станции метро:</h4>
+            <% @subway_stations.each do |place| %>
+              <div style="color:<%= place.metro_line.color %>">м. <%= place.name%>: <span><%= pretty_distance(place.distance) %></span></div>
+            <% end %>
+          </div>
+        <% end %>
+
+        <div class="airports-train-stations">
+          <h4>Ближайшие аэропорты и вокзалы:</h4>
+          <% if @airports.any? %>
+            <% @airports.each do |place| %>
+              <div class="airport"><%= place.name%>: <span><%= pretty_distance(place.distance) %></span></div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <button class="reservation-btn">Забронировать онлайн</button>
+    </div>
+  </div>
+</div>
+<div class="description">
+  <div class="tab-content">
+    <%= @hotel.description.html_safe %>
+  </div>
+</div>

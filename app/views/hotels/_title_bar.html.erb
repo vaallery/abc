@@ -1,0 +1,15 @@
+<div class="title-bar clearfix" slot="title-bar">
+  <div class="container">
+    <div class="left-side">
+      <%= link_to 'Вернуться к результатам поиска', hotels_path, class: "back-result" %>
+      <h1><%= @hotel.name %></h1>
+<!--      TODO зведы выводить в зависимости от значения <%= @hotel.hotel_category.slug %> см. 04-hotel_category.rb-->
+      <div class="stars"></div>
+      <div class="address"><%= @hotel.address %></div>
+    </div>
+    <div class="right-side">
+      <div class="rating"><%= rating_formatted(@hotel.rating) %><span><%= @hotel.rating %></span></div>
+      <div class="review-count">Отзывов 500</div>
+    </div>
+  </div>
+</div>

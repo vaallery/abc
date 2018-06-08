@@ -4,4 +4,12 @@
   <%= javascript_pack_tag 'hotel_app' %>
 <% end %>
 
-<div id="hotel-app"></div>
+<div id='hotel-app'>
+  <app>
+    <%= render 'hotels/title_bar' %>
+    <template slot="info">
+      <%= render 'hotels/info' %>
+    </template>
+    <%= render 'hotels/services' %>
+  </app>
+</div>

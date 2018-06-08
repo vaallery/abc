@@ -6,17 +6,16 @@
           <div class="col-md-3">
             <div class="title">Количество гостей</div>
           </div>
-          <div class="col-md-1">
-            <span class="guest-1" :class="guest_count.guest1 ? 'active' : null "></span>
+          <!--TODO В момент инициализации active работает, но не меняется по клику. хз почему - выяснить-->
+          <div v-for="i in [1,2,3]" class="col-md-1">
+            <span :class="['guest-'+i, {active : guest(i)}]"
+                  v-on:click.self.capture="changeGuestFilter(i)"></span>
           </div>
+          <!--TODO другой вариант того же, но тоже не работает-->
           <div class="col-md-1">
-            <span class="guest-2"></span>
-          </div>
-          <div class="col-md-1">
-            <span class="guest-3 active"></span>
-          </div>
-          <div class="col-md-1">
-            <span class="guest-4"></span>
+            <span class="guest-4"
+                  :class="guest4 ? 'active' : ''"
+                  v-on:click="changeGuestFilter(4)"></span>
           </div>
         </div>
       </div>
@@ -42,18 +41,34 @@
 
   export default {
     name: "rooms-app",
+    // props: ['bookings'],
     data(){
       return {
         stay_time: 'day',
-        guest_count: {guest1: false,guest2: false,guest3: false,guest4: false},
+        guest_count: [true, true, true, true, true],
         rooms: rooms_data,
         configurations: {},
         bookings: []
       }
     },
     methods: {
-      onSelect($event, conf, count) {
+      onSelect(conf) {
+        console.log(conf);
+        console.log(count);
         this.bookings += [{conf: conf, count: count}]
+      },
+      changeGuestFilter(i) {
+        // console.log(this.guest_count[i]);
+        this.guest_count[i] = !this.guest_count[i];
+        // console.log(this.guest_count[i]);
+        return true
+      },
+      guest(i){
+        // console.log(i);
+        return this.guest_count[i]
+      },
+      guest4() {
+        return this.guest_count[4]
       }
     },
     components: { BookingsList, RoomsList }

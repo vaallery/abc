@@ -9,7 +9,6 @@ export default [
       // t.string :services_description
       // t.integer :square
       // t.string :bed
-      // # TODO уточнить нафига столько атрибутов про кровати
       // t.integer :bed1
       // t.integer :bed2
       // t.integer :rooms
@@ -29,12 +28,14 @@ export default [
           // t.integer :cost
           // t.boolean :active, default: true
           {
+            id: 18,
             guests_count: 2,
             cost: 1000,
             stay_time: 'сутки',
             services: ['бесплатный завтрак', 'сауна']
           },
           {
+            id: 19,
             guests_count: 3,
             cost: 2000,
             stay_time: 'сутки',
