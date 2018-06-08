@@ -9,7 +9,7 @@ ActiveAdmin.register Hotel do
         f.input :for_main_page
         f.input :active
         br
-        f.input :services, as: :check_boxes, collection: Service.for_hotel.all.to_a
+        f.input :services, as: :check_boxes, collection: Service.for_hotel.map{|i| [i[2], i[0]] }
         f.input :description, as: :ckeditor, label: false, input_html: { ckeditor: { toolbar: 'mini' } }
       end
     end

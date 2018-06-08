@@ -12,7 +12,7 @@ ActiveAdmin.register Room do
         f.input :additional_bed
         f.input :active
         br
-        f.input :services, as: :check_boxes, collection: Service.for_room.all
+        f.input :services, as: :check_boxes, collection: Service.for_room.map{|i| [i[2], i[0]] }
         f.input :description, as: :ckeditor, label: false, input_html: { ckeditor: { toolbar: 'mini' } }
       end
     end
@@ -23,7 +23,7 @@ ActiveAdmin.register Room do
           ff.input :guests_count
           ff.input :stay_time
           ff.input :active
-          ff.input :services, as: :check_boxes, collection: Service.for_configuration.all
+          ff.input :services, as: :check_boxes, collection: Service.for_configuration.map{|i| [i[2], i[0]] }
         end
       end
     end
